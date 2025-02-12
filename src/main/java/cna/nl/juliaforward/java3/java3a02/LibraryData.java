@@ -15,12 +15,10 @@ public class LibraryData extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
 
-        // Hello
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
-        out.println("<h1>" + message + "</h1>");
-        out.println("<p>test</p>");
-        out.println("<h3><a href=\"index.jsp\">Home</a></h3>");
+        out.println("<h1>\uD83D\uDC0D" + message + "\uD83D\uDC0D</h1>");
+        out.println("<h3><button><a href=\"index.jsp\">Home</a></button></h3>");
         out.println("</body></html>");
 
     }
@@ -30,9 +28,15 @@ public class LibraryData extends HttpServlet {
 
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
-        out.println("<h1>" + "Whats up posting new book" + "</h1>");
-        out.println("<h3><a href=\"index.jsp\">Home</a></h3>");
-        out.println("<p>test</p>");
+        out.println("<h1>\uD83D\uDC0D" + "Adding new " + request.getParameter("type") + "\uD83D\uDC0D</h1>");
+        out.println("<h3><button><a href=\"index.jsp\">Home</a></button></h3>");
+        out.println("</body></html>");
+
+        if (request.getParameter("type") == "book") {
+
+        } else {
+
+        }
     }
 
     public void destroy() {

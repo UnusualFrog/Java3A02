@@ -8,10 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
     <head>
-        <title>Add New Author</title>
+        <title>🐍Add New Author🐍</title>
     </head>
     <body>
-    <h2>Create a New Author</h2>
+    <h1>🐍Create a New Author🐍</h1>
         <form action="library-data" method="post">
             <label for="id">ID:</label>
             <input type="text" id="id" name="id" required><br><br>
@@ -27,6 +27,6 @@
             <button type="submit">Submit</button>
         </form>
 
-        <h3><a href="index.jsp">Home</a></h3>
+        <h3><button><a href="index.jsp">Home</a></button></h3>
     </body>
 </html>

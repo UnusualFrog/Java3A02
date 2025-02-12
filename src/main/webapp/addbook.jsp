@@ -11,7 +11,7 @@
       <title>Create New Book</title>
   </head>
   <body>
-    <h2>Create a New Book</h2>
+    <h1>🐍Create a New Book🐍</h1>
     <form action="library-data" method="post">
       <label for="isbn">ISBN:</label>
       <input type="text" id="isbn" name="isbn" required><br><br>
@@ -29,6 +29,6 @@
 
       <button type="submit">Submit</button>
     </form>
-    <h3><a href="index.jsp">Home</a></h3>
+    <h3><button><a href="index.jsp">Home</a></button></h3>
   </body>
 </html>

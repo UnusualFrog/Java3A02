@@ -9,10 +9,10 @@
     <br/>
     <table>
       <tr>
-        <td><a href="addbook.jsp">Add New Book</a></td>
-        <td><a href="addauthor.jsp">Add New Author</a></td>
-        <td><a href="library-data">View Books</a></td>
-        <td><a href="library-data">View Authors</a></td>
+        <td><button><a href="addbook.jsp">Add New Book</a></button></td>
+        <td><button><a href="addauthor.jsp">Add New Author</a></button></td>
+        <td><button><a href="library-data">View Books</a></button></td>
+        <td><button><a href="library-data">View Authors</a></button></td>
       </tr>
     </table>
 
