@@ -9,6 +9,7 @@
 <html>
     <head>
         <title>🐍Add New Author🐍</title>
+        <link href="style.css" rel="stylesheet" type="text/css">
     </head>
     <body>
     <h1>🐍Create a New Author🐍</h1>

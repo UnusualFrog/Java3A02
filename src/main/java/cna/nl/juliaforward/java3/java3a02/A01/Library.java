@@ -1,5 +1,6 @@
 package cna.nl.juliaforward.java3.java3a02.A01;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -172,6 +173,57 @@ public class Library {
             authorList.remove(currentAuthor);
         }
     }
+
+    public static void showAllBooks(Library lib, PrintWriter out) {
+        for (Book book : lib.getBookList()) {
+            out.print("<h3>Title: " + book.getTitle() + "</h3> " );
+            out.println("<ul>");
+            out.println("<li>ISBN: " + book.getIsbn() + "</li>");
+            out.println("<li>Edition: " + book.getEditionNumber() + "</li>");
+            out.println("<li>Copyright: " + book.getCopyright() + "</li>");
+
+            // Single or Multi author
+            if (book.getAuthorList().size() > 1) {
+                out.print("<li>Authors: ");
+                for (int i = 0; i < book.getAuthorList().size(); i++) {
+                    // Check for last author
+                    if (i == book.getAuthorList().size() - 1) {
+                        out.print(book.getAuthorList().get(i).getFirstName() + " " + book.getAuthorList().get(i).getLastName());
+                    } else {
+                        out.print(book.getAuthorList().get(i).getFirstName() + " " + book.getAuthorList().get(i).getLastName() + ", ");
+                    }
+                }
+            } else {
+                out.print("\nAuthor: " + book.getAuthorList().getFirst().getFirstName() + " " + book.getAuthorList().getFirst().getLastName());
+            }
+
+
+            out.println("</li>");
+            out.println("</ul>");
+        }
+    }
+
+    public static void showAllAuthors(Library lib, PrintWriter out) {
+        for (Author author : lib.getAuthorList()) {
+            out.print("<h3>Name: " + author.getFirstName() + " " + author.getLastName() + "</h3>");
+            out.println("<ul>");
+            out.println("<li>AuthorID: " + author.getAuthorID() + "</li>");
+
+            // Single or Multi book
+            if (author.getBookList().size() > 1) {
+                out.println("<li>Books:<ul>");
+                for (Book book : author.getBookList()) {
+                    out.println("<li>" + book.getTitle() + "</li>");
+                }
+                out.println("</ul></li>");
+            } else {
+                out.println("<li>Book: " + author.getBookList().getFirst().getTitle() + "</li>");
+            }
+
+            out.println("</ul>");
+        }
+    }
+
 
 }
 

@@ -22,6 +22,8 @@ public class BookDatabaseManager {
      * @param lib The library object to be populated with books, authors, and their relationships.
      */
     public static void loadLibrary(Library lib) {
+        MariaDBProperties.isDriverRegistered(System.out);
+
         String BOOKS_QUERY = "SELECT isbn, title, editionNumber, copyright FROM TITLES";
         String AUTHORS_QUERY = "SELECT authorID, firstName, lastName FROM AUTHORS";
         String RELATIONSHIP_QUERY = "SELECT b.authorID, a.firstName, a.lastName, b.isbn, c.title, c.editionNumber, c.copyright FROM\n" +
@@ -95,7 +97,6 @@ public class BookDatabaseManager {
 
                 // Add relationships if the book and author exist
                 currentBook.addAuthor(currentAuthor);
-                currentAuthor.addBook(currentBook);
 
             }
             conn.close();
