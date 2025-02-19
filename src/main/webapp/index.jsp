@@ -15,12 +15,12 @@
         <td><button><a href="addauthor.jsp">Add New Author</a></button></td>
 
         <form action="library-data" method="get">
-          <input type="hidden" name="type" value="Book">
+          <input type="hidden" name="type" value="book">
           <td><button type="submit">View Books</button></td>
         </form>
 
         <form action="library-data" method="get">
-          <input type="hidden" name="type" value="Author">
+          <input type="hidden" name="type" value="author">
           <td><button type="submit">View Authors</button></td>
         </form>
 

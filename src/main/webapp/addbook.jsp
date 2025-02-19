@@ -26,6 +26,15 @@
       <label for="copyright">Copyright:</label>
       <input type="text" id="copyright" name="copyright" required><br><br>
 
+      <label for="id">Author ID:</label>
+      <input type="text" id="id" name="id" required><br><br>
+
+      <label for="firstName">Author First Name:</label>
+      <input type="text" id="firstName" name="firstName" required><br><br>
+
+      <label for="lastName">Author Last Name:</label>
+      <input type="text" id="lastName" name="lastName" required><br><br>
+
       <input type="hidden" name="type" value="book">
 
       <button type="submit">Submit</button>

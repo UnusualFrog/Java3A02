@@ -3,6 +3,7 @@ package cna.nl.juliaforward.java3.java3a02;
 import java.io.*;
 import java.util.Objects;
 
+import cna.nl.juliaforward.java3.java3a02.A01.Author;
 import cna.nl.juliaforward.java3.java3a02.A01.Book;
 import cna.nl.juliaforward.java3.java3a02.A01.BookDatabaseManager;
 import cna.nl.juliaforward.java3.java3a02.A01.Library;
@@ -30,7 +31,7 @@ public class LibraryData extends HttpServlet {
         out.println("</head>");
         out.println("<h1>\uD83D\uDC0D" + request.getParameter("type") + " List" + "\uD83D\uDC0D</h1>");
 
-        if (Objects.equals(request.getParameter("type"), "Book")) {
+        if (Objects.equals(request.getParameter("type"), "book")) {
             Library.showAllBooks(lib, out);
         } else {
             Library.showAllAuthors(lib, out);
@@ -47,10 +48,15 @@ public class LibraryData extends HttpServlet {
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
         out.println("<h1>\uD83D\uDC0D" + "Adding new " + request.getParameter("type") + "\uD83D\uDC0D</h1>");
-        if (Objects.equals(request.getParameter("type"), "Book")) {
-
+        if (Objects.equals(request.getParameter("type"), "book")) {
+            Book newBook = new Book(request.getParameter("isbn"), request.getParameter("title"), Integer.parseInt(request.getParameter("editionNumber")), request.getParameter("copyright"));
+            Author newAuthor = new Author(Integer.parseInt(request.getParameter("id")), request.getParameter("firstName"), request.getParameter("lastName"));
+            newBook.addAuthor(newAuthor);
+            lib.addBook(newBook);
+            lib.addAuthor(newAuthor);
         } else {
-
+            Author newAuthor = new Author(Integer.parseInt(request.getParameter("id")), request.getParameter("firstName"), request.getParameter("lastName"));
+            lib.addAuthor(newAuthor);
         }
         out.println("<h3><button><a href=\"index.jsp\">Home</a></button></h3>");
         out.println("</body></html>");

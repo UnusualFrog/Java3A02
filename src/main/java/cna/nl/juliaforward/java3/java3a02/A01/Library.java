@@ -193,10 +193,9 @@ public class Library {
                         out.print(book.getAuthorList().get(i).getFirstName() + " " + book.getAuthorList().get(i).getLastName() + ", ");
                     }
                 }
-            } else {
-                out.print("\nAuthor: " + book.getAuthorList().getFirst().getFirstName() + " " + book.getAuthorList().getFirst().getLastName());
+            } else if (book.getAuthorList().size() == 1) {
+                out.print("<li>Author: " + book.getAuthorList().getFirst().getFirstName() + " " + book.getAuthorList().getFirst().getLastName());
             }
-
 
             out.println("</li>");
             out.println("</ul>");
@@ -216,7 +215,7 @@ public class Library {
                     out.println("<li>" + book.getTitle() + "</li>");
                 }
                 out.println("</ul></li>");
-            } else {
+            } else if (author.getBookList().size() == 1) {
                 out.println("<li>Book: " + author.getBookList().getFirst().getTitle() + "</li>");
             }
 
