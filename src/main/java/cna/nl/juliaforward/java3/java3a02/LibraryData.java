@@ -35,7 +35,7 @@ public class LibraryData extends HttpServlet {
             Library.showAllAuthors(lib, out);
         }
 
-        out.println("<h3><button><a href=\"index.jsp\">Home</a></button></h3>");
+        out.println("<h3><button class=\"button-3\"><a href=\"index.jsp\">Home</a></button></h3>");
         out.println("</body></html>");
 
     }
@@ -82,7 +82,7 @@ public class LibraryData extends HttpServlet {
                 out.println("<h2><span>Error adding " + request.getParameter("firstName") + "</span></h2>");
             }
         }
-        out.println("<h3><button><a href=\"index.jsp\">Home</a></button></h3>");
+        out.println("<h3><button class=\"button-3\"><a href=\"index.jsp\">Home</a></button></h3>");
         out.println("</body></html>");
     }
 

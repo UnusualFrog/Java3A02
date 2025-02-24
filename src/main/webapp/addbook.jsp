@@ -37,8 +37,8 @@
 
       <input type="hidden" name="type" value="book">
 
-      <button type="submit">Submit</button>
+      <button type="submit" class="button-3">Submit</button>
     </form>
-    <h3><button><a href="index.jsp">Home</a></button></h3>
+    <h3><button class="button-3"><a href="index.jsp">Home</a></button></h3>
   </body>
 </html>

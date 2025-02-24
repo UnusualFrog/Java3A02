@@ -37,6 +37,7 @@ public class Library {
      * it is added to the book list and the database is updated.
      *
      * @param book the Book object to be added to the library.
+     * @return result the result of the add operation, true is successful, false otherwise
      */
     public boolean addBook(Book book) {
         boolean result = false;
@@ -54,6 +55,7 @@ public class Library {
      * the author is added to the author list and the database is updated.
      *
      * @param author the Author object to be added to the library.
+     * @return result the result of the add operation, true is successful, false otherwise
      */
     public boolean addAuthor(Author author) {
         boolean result = false;
