@@ -38,11 +38,15 @@ public class Library {
      *
      * @param book the Book object to be added to the library.
      */
-    public void addBook(Book book) {
+    public boolean addBook(Book book) {
+        boolean result = false;
         if (!bookList.contains(book)) {
-            bookList.add(book);
-            BookDatabaseManager.createBook(book, this);
+            result = BookDatabaseManager.createBook(book, this);
+            if (result) {
+                bookList.add(book);
+            }
         }
+        return result;
     }
 
     /**
@@ -51,11 +55,15 @@ public class Library {
      *
      * @param author the Author object to be added to the library.
      */
-    public void addAuthor(Author author) {
+    public boolean addAuthor(Author author) {
+        boolean result = false;
         if (!authorList.contains(author)) {
-            authorList.add(author);
-            BookDatabaseManager.createAuthor(author, this);
+            result = BookDatabaseManager.createAuthor(author, this);
+            if (result) {
+                authorList.add(author);
+            }
         }
+        return result;
     }
 
     /**

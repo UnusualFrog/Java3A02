@@ -113,8 +113,9 @@ public class BookDatabaseManager {
      * @param book The book object containing the details of the book to be added.
      * @param lib The library object containing all books and authors
      */
-    public static void createBook(Book book, Library lib) {
+    public static boolean createBook(Book book, Library lib) {
         String CREATE_BOOK_QUERY = "INSERT INTO titles VALUES (?, ?, ?, ?)";
+        boolean success = true;
         System.out.println(CREATE_BOOK_QUERY);
         try {
             Connection conn = DriverManager.getConnection(
@@ -133,9 +134,11 @@ public class BookDatabaseManager {
 
             System.out.println("Created book successfully!");
             conn.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Error creating book");
+            success = false;
         }
 
         for (Author author : lib.getAuthorList()) {
@@ -143,6 +146,7 @@ public class BookDatabaseManager {
                 createRelation(book, author);
             }
         }
+        return success;
     }
 
     /**
@@ -151,8 +155,9 @@ public class BookDatabaseManager {
      * @param author The Author object containing the details of the author to be added.
      * @param lib The library object containing all books and authors
      */
-    public static void createAuthor(Author author, Library lib) {
+    public static boolean createAuthor(Author author, Library lib) {
         String CREATE_AUTHOR_QUERY = "INSERT INTO authors VALUES (?, ?, ?)";
+        boolean success = true;
         System.out.println(CREATE_AUTHOR_QUERY);
         try {
             Connection conn = DriverManager.getConnection(
@@ -173,6 +178,7 @@ public class BookDatabaseManager {
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Error creating author");
+            success = false;
         }
 
         for (Book book : lib.getBookList()) {
@@ -180,6 +186,7 @@ public class BookDatabaseManager {
                 createRelation(book, author);
             }
         }
+        return success;
     }
 
 

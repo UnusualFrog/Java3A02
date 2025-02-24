@@ -12,11 +12,9 @@ import jakarta.servlet.annotation.*;
 
 @WebServlet(name = "libraryData", value = "/library-data")
 public class LibraryData extends HttpServlet {
-    private String message;
     Library lib = new Library();
 
     public void init() {
-        message = "Library List!";
         BookDatabaseManager.loadLibrary(lib);
     }
 
@@ -44,19 +42,45 @@ public class LibraryData extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
+        boolean result = false;
 
         PrintWriter out = response.getWriter();
-        out.println("<html><body>");
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<title>Library Data</title>");
+        out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"" + request.getContextPath() + "/style.css\">");
+        out.println("</head>");
+
+        out.println("<body>");
         out.println("<h1>\uD83D\uDC0D" + "Adding new " + request.getParameter("type") + "\uD83D\uDC0D</h1>");
         if (Objects.equals(request.getParameter("type"), "book")) {
+            // Add new book & author to library/DB
             Book newBook = new Book(request.getParameter("isbn"), request.getParameter("title"), Integer.parseInt(request.getParameter("editionNumber")), request.getParameter("copyright"));
             Author newAuthor = new Author(Integer.parseInt(request.getParameter("id")), request.getParameter("firstName"), request.getParameter("lastName"));
             newBook.addAuthor(newAuthor);
-            lib.addBook(newBook);
-            lib.addAuthor(newAuthor);
+
+            // Page Output
+            result = lib.addBook(newBook);
+            if (result) {
+                out.println("<h2>Successfully added " + request.getParameter("title") + "</h2>");
+            } else {
+                out.println("<h2><span>Error adding " + request.getParameter("title") + "</span></h2>");
+            }
+            result = lib.addAuthor(newAuthor);
+            if (result) {
+                out.println("<h2>Successfully added " + request.getParameter("firstName") + "</h2>");
+            } else {
+                out.println("<h2><span>Error adding " + request.getParameter("firstName") + "</span></h2>");
+            }
+
         } else {
             Author newAuthor = new Author(Integer.parseInt(request.getParameter("id")), request.getParameter("firstName"), request.getParameter("lastName"));
-            lib.addAuthor(newAuthor);
+            result = lib.addAuthor(newAuthor);
+            if (result) {
+                out.println("<h2>Successfully added " + request.getParameter("firstName") + "</h2>");
+            } else {
+                out.println("<h2><span>Error adding " + request.getParameter("firstName") + "</span></h2>");
+            }
         }
         out.println("<h3><button><a href=\"index.jsp\">Home</a></button></h3>");
         out.println("</body></html>");
